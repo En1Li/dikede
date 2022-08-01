@@ -1,24 +1,18 @@
-import request from '@/utils/request'
+import request from "@/utils/request";
 
-export function login(data) {
+// 获取验证码
+export const getYanZhang = (randernum) => {
   return request({
-    url: '/vue-admin-template/user/login',
-    method: 'post',
-    data
-  })
-}
+    url: `/user-service/user/imageCode/${randernum}`,
+    responseType: "arraybuffer",
+  });
+};
 
-export function getInfo(token) {
+// 获取登录信息
+export const getLogin = (data) => {
   return request({
-    url: '/vue-admin-template/user/info',
-    method: 'get',
-    params: { token }
-  })
-}
-
-export function logout() {
-  return request({
-    url: '/vue-admin-template/user/logout',
-    method: 'post'
-  })
-}
+    method: "POST",
+    url: "/user-service/user/login",
+    data,
+  });
+};
