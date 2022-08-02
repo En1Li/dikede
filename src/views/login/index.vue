@@ -85,8 +85,8 @@ export default {
 
     // 点击登录
     async submitForm(formName) {
-      await this.$refs[formName].validate();
       this.loadingbtn = true;
+      await this.$refs[formName].validate();
       await this.getloginInfo({
         loginName: this.ruleForm.zhanghao,
         password: this.ruleForm.password,

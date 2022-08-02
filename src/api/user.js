@@ -16,3 +16,10 @@ export const getLogin = (data) => {
     data,
   });
 };
+
+// 获取用户基本信息
+export const getuserInfo = (id) => {
+  return request({
+    url: "/user-service/user/" + id,
+  });
+};
