@@ -1,5 +1,6 @@
 import { getYanZhang, getLogin, getuserInfo } from "@/api/user";
 import router from "@/router";
+import {setTokenTime} from '@/utils/auth'
 export default {
   namespaced: true,
   state: {
@@ -40,6 +41,7 @@ export default {
       const res = await getLogin(payload);
       context.commit("setloginInfo", res);
       router.push("/");
+      setTokenTime()
       // return res;
     },
     // 获取用户信息接口
@@ -47,5 +49,10 @@ export default {
       const res = await getuserInfo(payload);
       context.commit("setuserInfo", res.data);
     },
+    // 退出功能
+    logout(context){
+      context.commit('setloginInfo' , {})
+      context.commit('setuserInfo' , {})
+    }
   },
 };

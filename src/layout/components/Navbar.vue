@@ -10,12 +10,12 @@
     <div class="navbar-user">
       <!-- 头像 -->
       <div class="navbar-userImg">
-        <img :src="$store.state.user.userInfo.image" />
+        <img :src="userInfo.image+'123'" v-defauleImg="defauleImg" />
       </div>
       <!-- 头像 -->
 
       <!-- 信息 -->
-      <span>欢迎您, {{$store.state.user.userInfo.loginName}}</span>
+      <span>欢迎您, {{ $store.state.user.userInfo.loginName }}</span>
       <!-- 信息 -->
 
       <!-- 退出 -->
@@ -24,7 +24,7 @@
         trigger="click"
         @click.native="logout"
       >
-        <div class="avatar-wrapper">
+        <div class="avatar-wrapper" @click='logout'>
           退出
           <i class="el-icon-caret-bottom" />
         </div>
@@ -35,26 +35,30 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { createNamespacedHelpers } from "vuex";
 import Breadcrumb from "@/components/Breadcrumb";
 import Hamburger from "@/components/Hamburger";
+import defauleImg from "@/assets/login_imgs/people.png";
+const { mapState: usermapState } = createNamespacedHelpers("user");
 
 export default {
+  data() {
+    return {
+      defauleImg: defauleImg,
+    };
+  },
   components: {
     Breadcrumb,
     Hamburger,
   },
   computed: {
-    ...mapGetters(["sidebar", "avatar"]),
+    ...usermapState(["userInfo"]),
   },
   methods: {
-    toggleSideBar() {
-      this.$store.dispatch("app/toggleSideBar");
-    },
-    async logout() {
-      await this.$store.dispatch("user/logout");
-      this.$router.push(`/login?redirect=${this.$route.fullPath}`);
-    },
+    async logout(){
+      await this.$store.dispatch('user/logout')
+      this.$router.push('/login')
+    }
   },
 };
 </script>
