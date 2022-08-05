@@ -10,7 +10,7 @@
     <div class="navbar-user">
       <!-- 头像 -->
       <div class="navbar-userImg">
-        <img :src="userInfo.image+'123'" v-defauleImg="defauleImg" />
+        <img  :src="userInfo.image+'123'" v-defauleImg="defauleImg" />
       </div>
       <!-- 头像 -->
 
@@ -24,7 +24,7 @@
         trigger="click"
         @click.native="logout"
       >
-        <div class="avatar-wrapper" @click='logout'>
+        <div class="avatar-wrapper" @click="logout">
           退出
           <i class="el-icon-caret-bottom" />
         </div>
@@ -55,10 +55,10 @@ export default {
     ...usermapState(["userInfo"]),
   },
   methods: {
-    async logout(){
-      await this.$store.dispatch('user/logout')
-      this.$router.push('/login')
-    }
+    async logout() {
+      await this.$store.dispatch("user/logout");
+      this.$router.push("/login");
+    },
   },
 };
 </script>

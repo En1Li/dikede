@@ -1,27 +1,30 @@
 <template>
   <div>
-运维工单
+    <Button
+      color="#5f84ff"
+      label="查询"
+      labelColor="#fff"
+      icon="el-icon-search"
+      iconColor="#fff"
+    >
+    </Button>
   </div>
 </template>
 
 <script>
+import Button from "@/components/button.vue";
 export default {
-  data () {
-    return {
-
-    }
+  components: {
+    Button,
+  },
+  data() {
+    return {};
   },
 
-  created () {
+  created() {},
 
-  },
-
-  methods: {
-
-  }
-}
+  methods: {},
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

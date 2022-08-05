@@ -33,18 +33,22 @@ request.interceptors.request.use(async (config) => {
 // 响应拦截器
 request.interceptors.response.use(
   (res) => {
-    if (res.config.url.startsWith("/api/user-service/user/imageCode/")) {
-      return res;
-    }
-    if (res.config.url.startsWith("/api/user-service/user/1")) {
-      return res;
-    }
-    const { data } = res;
-    if (data.success) {
-      return data;
-    }
-    Message.error(data.msg);
-    return Promise.reject(new Error(data.msg));
+    return res
+    // if (res.config.url.startsWith("/api/user-service/user/imageCode/")) {
+    //   return res;
+    // }
+    // if (res.config.url.startsWith("/api/user-service/user/1")) {
+    //   return res;
+    // }
+    // if (res.config.url.startsWith("/api/task-service/task/search")) {
+    //   return res;
+    // }
+    // const { data } = res;
+    // if (data.success) {
+    //   return data;
+    // }
+    // Message.error(data.msg);
+    // return Promise.reject(new Error(data.msg));
   },
   async function (error) {
     // 对响应错误做点什么

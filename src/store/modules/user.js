@@ -39,7 +39,7 @@ export default {
     // 登录接口
     async getloginInfo(context, payload) {
       const res = await getLogin(payload);
-      context.commit("setloginInfo", res);
+      context.commit("setloginInfo", res.data);
       router.push("/");
       setTokenTime()
       // return res;
